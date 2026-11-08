@@ -142,10 +142,16 @@ function calculate(){
  return {wheelRpm,wheelTorque,theoreticalSpeed,normalForce,gravityForce,rollingForce,resistance,gripLimit,rawDriveForce,actualDriveForce,netForce,acceleration,slipping:rawDriveForce>gripLimit+1e-8,canClimb:netForce>0.015};
 }
 function carTransform(x){
- // Wheel centres are at local y=211. Keep them just above the road surface.
+ // Track centerline is defined by (35,250) -> (725,95).
+ // Raise the vehicle 10 SVG units from the previous start position so
+ // the chassis/wheels do not appear sunk into the incline at the start.
  if(state.track==='hill'){
-   const roadY=250+(x-35)*(95-250)/(725-35);
-   const offsetY=roadY-220;
+   const startX=35, endX=725, startY=250, endY=95;
+   const slope=(endY-startY)/(endX-startX);
+   const roadY=startY+(x-startX)*slope;
+   const previousOffsetY=roadY-220;
+   const START_HEIGHT_CORRECTION=10;
+   const offsetY=previousOffsetY-START_HEIGHT_CORRECTION;
    return `translate(${x} ${offsetY}) rotate(-12.67 0 211)`;
  }
  return `translate(${x} 0)`;
