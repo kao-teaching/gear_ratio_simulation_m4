@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101d35">
+<title>Gear Ratio Simulator | Engineering Lab</title>
+<style>
+:root{--bg:#0b1220;--panel:#121e32;--panel2:#182740;--line:#2a3b57;--text:#eef4ff;--muted:#9eb0ca;--blue:#62a8ff;--cyan:#53d7d0;--orange:#ffb454;--green:#6fe0a2;--red:#ff7e86}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#1a3152 0,transparent 34%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:auto;padding:24px 18px 48px}.hero{padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(115deg,#172b49,#101a2d);position:relative;overflow:hidden}.eyebrow{color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:.13em}.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;margin:8px 0}.hero p{color:var(--muted);max-width:720px;margin:10px 0 0}.tag{display:inline-block;padding:5px 10px;border-radius:99px;background:#203d60;color:#cfe5ff;font-size:.78rem;font-weight:700}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:18px;margin-top:18px}.panel{background:rgba(18,30,50,.94);border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0}.panel h2{font-size:1.08rem;margin:0 0 14px}.section-label{font-size:.76rem;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:18px 0 8px}.choice{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;background:#101a2b}.choice:has(input:checked){border-color:var(--blue);background:#172c49;box-shadow:0 0 0 1px #62a8ff33}.choice input{accent-color:var(--blue);margin-top:5px}.choice b{display:block}.choice small{color:var(--muted)}.control{margin:14px 0}.control-head{display:flex;justify-content:space-between;gap:12px;font-size:.9rem}.control output{color:var(--cyan);font-weight:800}input[type=range]{width:100%;accent-color:var(--cyan);margin-top:9px}select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#0d1728;color:var(--text)}
+button{border:0;border-radius:11px;padding:11px 15px;background:var(--blue);color:#071326;font-weight:800;cursor:pointer}button.secondary{background:#253854;color:var(--text);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.stage{padding:0;overflow:hidden}.stage-head{padding:17px 18px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.stage-head p{color:var(--muted);margin:3px 0;font-size:.86rem}.track-wrap{padding:12px 14px 4px}.track{width:100%;height:auto;display:block;border-radius:14px;background:linear-gradient(#14243a,#0d1728)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px}.metric{background:#0e192a;border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}.metric span{display:block;color:var(--muted);font-size:.76rem}.metric strong{font-size:1.25rem;display:block;margin-top:3px;overflow-wrap:anywhere}.metric em{font-style:normal;color:var(--muted);font-size:.72rem}.status{margin:0 14px 14px;padding:12px 14px;border-radius:12px;background:#172b42;border:1px solid #2b4768}.status strong{color:var(--cyan)}.lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.bar-row{display:grid;grid-template-columns:90px 1fr 55px;gap:8px;align-items:center;margin:12px 0;font-size:.83rem}.bar{height:10px;border-radius:99px;background:#263750;overflow:hidden}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}.bar.orange i{background:linear-gradient(90deg,#ff9f43,#ffd27c)}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:700}.note{color:var(--muted);font-size:.8rem}.formula{background:#0d1728;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px;font-family:ui-monospace,monospace;color:#d8e9ff}.question{padding:12px;background:#111e31;border-radius:12px;margin:8px 0}.question b{color:var(--orange)}footer{text-align:center;color:var(--muted);font-size:.78rem;padding:25px 8px 0}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.lower{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.wrap{padding:13px 10px 30px}.hero{padding:20px}.panel{padding:14px}.metrics{gap:7px;padding:10px}.metric{padding:9px}.metric strong{font-size:1.08rem}.stage-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <span class="eyebrow">INTERACTIVE ENGINEERING LAB · M.4</span>
+  <h1>GEAR RATIO<br>SIMULATOR</h1>
+  <span class="tag">ทดลองเลือกเกียร์ให้เหมาะกับสนามแข่ง</span>
+  <p>เปรียบเทียบความสัมพันธ์ระหว่างอัตราทดเฟือง แรงบิด ความเร็วรอบ และความสามารถในการเคลื่อนที่บนทางเรียบกับทางลาดชัน</p>
+</header>
+
+<main class="layout">
+<aside class="panel">
+  <h2>แผงควบคุมการทดลอง</h2>
+  <div class="section-label">01 · เลือกชุดเกียร์</div>
+  <label class="choice"><input type="radio" name="gear" value="0.5"><span><b>เกียร์สูง · อัตราทดต่ำ</b><small>เฟืองขับ 40 ฟัน → เฟืองตาม 20 ฟัน · 0.5:1</small></span></label>
+  <label class="choice"><input type="radio" name="gear" value="1" checked><span><b>เกียร์ปกติ · อัตราทด 1:1</b><small>เฟืองขับ 30 ฟัน → เฟืองตาม 30 ฟัน</small></span></label>
+  <label class="choice"><input type="radio" name="gear" value="2"><span><b>เกียร์ต่ำ · อัตราทดสูง</b><small>เฟืองขับ 20 ฟัน → เฟืองตาม 40 ฟัน · 2:1</small></span></label>
+
+  <div class="section-label">02 · เลือกสนามทดสอบ</div>
+  <label class="choice"><input type="radio" name="track" value="flat" checked><span><b>ทางเรียบ (Flat Track)</b><small>พื้นราบ ระยะทางจำลอง 20 เมตร</small></span></label>
+  <label class="choice"><input type="radio" name="track" value="hill"><span><b>ทางลาดชัน (Inclined Track)</b><small>ทางลาดเอียง 30 องศา</small></span></label>
+
+  <div class="section-label">03 · ปรับเงื่อนไข</div>
+  <div class="control"><div class="control-head"><label for="motor">ความเร็วรอบมอเตอร์</label><output id="motorOut">300 RPM</output></div><input id="motor" type="range" min="100" max="600" step="50" value="300"></div>
+  <div class="control"><div class="control-head"><label for="mass">มวลรถ</label><output id="massOut">500 g</output></div><input id="mass" type="range" min="300" max="1000" step="50" value="500"></div>
+  <div class="control"><div class="control-head"><label for="radius">รัศมีล้อ</label><output id="radiusOut">3.0 cm</output></div><input id="radius" type="range" min="2" max="5" step=".5" value="3"></div>
+  <div class="control"><div class="control-head"><label for="torque">แรงบิดมอเตอร์ (ค่าตัวอย่าง)</label><output id="torqueOut">0.08 N·m</output></div><input id="torque" type="range" min=".03" max=".15" step=".01" value=".08"></div>
+  <div class="buttons"><button id="runBtn">▶ เริ่มจำลอง</button><button class="secondary" id="resetBtn">รีเซ็ต</button></div>
+  <p class="note">ปรับค่าแล้วกด “เริ่มจำลอง” เพื่อดูการเคลื่อนที่ตามเงื่อนไขที่เลือก</p>
+</aside>
+
+<section class="panel stage">
+  <div class="stage-head"><div><h2>สนามจำลองการเคลื่อนที่</h2><p id="trackCaption">สนามทางเรียบ · ระยะทางเป้าหมาย 20 เมตร</p></div><span class="tag" id="gearTag">อัตราทด 1:1</span></div>
+  <div class="track-wrap">
+    <svg class="track" id="trackSvg" viewBox="0 0 760 300" role="img" aria-label="ภาพจำลองรถแข่งบนสนาม">
+      <defs><linearGradient id="road" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#43566e"/><stop offset="1" stop-color="#26364c"/></linearGradient></defs>
+      <path id="roadPath" d="M35 220 L725 220" stroke="url(#road)" stroke-width="82" fill="none" stroke-linecap="round"/>
+      <path id="lane" d="M35 220 L725 220" stroke="#d9e4f3" stroke-width="3" stroke-dasharray="18 16" fill="none" opacity=".65"/>
+      <g id="finish"><path d="M700 165v110" stroke="#fff" stroke-width="5"/><path d="M690 165h20v20h-20zM690 205h20v20h-20zM690 245h20v20h-20z" fill="#fff"/></g>
+      <g id="car" transform="translate(75 0)">
+        <ellipse cx="0" cy="234" rx="48" ry="8" fill="#050b13" opacity=".5"/>
+        <circle cx="-25" cy="211" r="13" fill="#111722" stroke="#b9c9dc" stroke-width="3"/><circle cx="27" cy="211" r="13" fill="#111722" stroke="#b9c9dc" stroke-width="3"/>
+        <path d="M-48 198l9-25q5-12 20-12h33q15 0 24 15l13 22z" fill="#4d9cff" stroke="#c4e0ff" stroke-width="2"/>
+        <path d="M-23 174h32q9 0 15 13h-58q3-13 11-13" fill="#b8e8f4"/>
+        <path d="M-48 196h100v9h-100z" fill="#2b6bb2"/>
+        <rect x="-7" y="192" width="17" height="5" rx="2" fill="#ffdc83"/>
+      </g>
+      <text x="35" y="45" fill="#b9cbe2" font-size="16" id="sceneLabel">FLAT TRACK · 20 m</text>
+      <text x="700" y="145" fill="#dce9f8" font-size="13" text-anchor="middle">FINISH</text>
+    </svg>
+  </div>
+  <div class="metrics">
+    <div class="metric"><span>Wheel RPM</span><strong id="wheelRpm">300</strong><em>รอบ/นาที</em></div>
+    <div class="metric"><span>แรงบิดที่ล้อ</span><strong id="wheelTorque">0.08</strong><em>N·m (อุดมคติ)</em></div>
+    <div class="metric"><span>ความเร็วเชิงทฤษฎี</span><strong id="speed">5.65</strong><em>km/h</em></div>
+    <div class="metric"><span>ผลจำลอง</span><strong id="result">พร้อมทดลอง</strong><em id="resultSub">กดเริ่มจำลอง</em></div>
+  </div>
+  <div class="status" id="status"><strong>สถานะ:</strong> เลือกชุดเกียร์และสนาม จากนั้นเริ่มจำลองเพื่อเปรียบเทียบ</div>
+</section>
+</main>
+
+<section class="lower">
+  <div class="panel">
+    <h2>เปรียบเทียบผลของอัตราทดเฟือง</h2>
+    <div class="bar-row"><span>Wheel RPM</span><div class="bar"><i id="rpmBar"></i></div><b id="rpmBarText">—</b></div>
+    <div class="bar-row"><span>แรงบิดล้อ</span><div class="bar orange"><i id="torqueBar"></i></div><b id="torqueBarText">—</b></div>
+    <div class="formula">Gear Ratio = จำนวนฟันเฟืองตาม ÷ จำนวนฟันเฟืองขับ<br>Wheel RPM ≈ Motor RPM ÷ Gear Ratio<br>Wheel Torque ≈ Motor Torque × Gear Ratio</div>
+    <p class="note">สมการเป็นแบบจำลองอุดมคติ ไม่รวมการสูญเสียในชุดเฟืองและข้อจำกัดของมอเตอร์</p>
+  </div>
+  <div class="panel">
+    <h2>ตารางเปรียบเทียบ 4 สถานการณ์</h2>
+    <div style="overflow-x:auto">
+    <table><thead><tr><th>อัตราทด</th><th>สนาม</th><th>จุดเด่น</th><th>ข้อสังเกต</th></tr></thead>
+    <tbody>
+      <tr><td>2:1</td><td>ทางเรียบ</td><td>แรงบิดสูง</td><td>รอบล้อต่ำ</td></tr>
+      <tr><td>0.5:1</td><td>ทางเรียบ</td><td>รอบล้อสูง</td><td>แรงบิดต่ำ</td></tr>
+      <tr><td>2:1</td><td>ทางชัน</td><td>ได้เปรียบด้านแรงฉุด</td><td>ยังขึ้นกับแรงยึดเกาะ</td></tr>
+      <tr><td>0.5:1</td><td>ทางชัน</td><td>รอบล้อสูง</td><td>อาจมีแรงบิดไม่พอ</td></tr>
+    </tbody></table></div>
+    <p class="note">ตารางเป็นการคาดการณ์เชิงหลักการ ไม่ใช่ผลทดสอบรถจริง</p>
+  </div>
+</section>
+
+<section class="panel" style="margin-top:18px">
+  <h2>ภารกิจนักวิศวกร: Predict – Observe – Explain</h2>
+  <div class="question"><b>1 · Predict</b><br>ก่อนเริ่มทดลอง คาดการณ์ว่าอัตราทดใดเหมาะกับสนามทางชันมากกว่า เพราะเหตุใด?</div>
+  <div class="question"><b>2 · Observe</b><br>เปลี่ยนอัตราทดเฟือง แล้วสังเกตความแตกต่างของ Wheel RPM และแรงบิดที่ล้อ</div>
+  <div class="question"><b>3 · Explain</b><br>อธิบายว่าเหตุใดการเพิ่มแรงบิดที่ล้อจึงอาจช่วยให้รถไต่ทางชันได้ดีขึ้น และมีปัจจัยใดอีกบ้างที่เกี่ยวข้อง?</div>
+</section>
+<footer>MECHATRONICS RACE CAR · GEAR RATIO LEARNING SIMULATOR<br>สื่อประกอบการเรียนรู้ รายวิชาการออกแบบและวิทยาการคำนวณ 3 (ว30109)</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const state={gear:1,track:"flat",motor:300,mass:500,radius:3,torque:.08,progress:0,raf:null,last:0,running:false};
+const fmt=(n,d=2)=>Number(n).toFixed(d);
+function read(){
+ state.gear=Number(document.querySelector('input[name="gear"]:checked').value);
+ state.track=document.querySelector('input[name="track"]:checked').value;
+ state.motor=+$("motor").value;state.mass=+$("mass").value;state.radius=+$("radius").value;state.torque=+$("torque").value;
+}
+function drawScene(){
+ const hill=state.track==="hill";
+ $("roadPath").setAttribute("d",hill?"M35 250 L725 95":"M35 220 L725 220");
+ $("lane").setAttribute("d",hill?"M35 250 L725 95":"M35 220 L725 220");
+ $("car").setAttribute("transform",hill?"translate(75 241) rotate(-12)":"translate(75 0)");
+ $("finish").setAttribute("transform",hill?"translate(0 -125)":"");
+ $("sceneLabel").textContent=hill?"INCLINED TRACK · 30°":"FLAT TRACK · 20 m";
+ $("trackCaption").textContent=hill?"สนามทางลาดชัน · มุมเอียง 30 องศา":"สนามทางเรียบ · ระยะทางเป้าหมาย 20 เมตร";
+}
+function update(){
+ read();const ratio=state.gear,wr=state.motor/ratio,wt=state.torque*ratio;
+ const speed=wr*2*Math.PI*(state.radius/100)*60/1000; // km/h
+ $("motorOut").textContent=state.motor+" RPM";$("massOut").textContent=state.mass+" g";$("radiusOut").textContent=fmt(state.radius,1)+" cm";$("torqueOut").textContent=fmt(state.torque,2)+" N·m";
+ $("gearTag").textContent="อัตราทด "+ratio+":1";
+ $("wheelRpm").textContent=fmt(wr,0);$("wheelTorque").textContent=fmt(wt,2);$("speed").textContent=fmt(speed,2);
+ $("rpmBar").style.width=(wr/1200*100)+"%";$("rpmBarText").textContent=fmt(wr,0);
+ $("torqueBar").style.width=(wt/.3*100)+"%";$("torqueBarText").textContent=fmt(wt,2);
+ drawScene();
+ if(!state.running){$("result").textContent="พร้อมทดลอง";$("resultSub").textContent="กดเริ่มจำลอง";}
+}
+function stop(){state.running=false;if(state.raf)cancelAnimationFrame(state.raf);state.raf=null;$("runBtn").textContent="▶ เริ่มจำลอง";}
+function animate(t){
+ if(!state.running)return;
+ if(!state.last)state.last=t;const dt=Math.min((t-state.last)/1000,.05);state.last=t;
+ const ratio=state.gear, wheelTorque=state.torque*ratio, wheelRpm=state.motor/ratio;
+ const r=state.radius/100, linear=wheelRpm*2*Math.PI*r/60;
+ // Illustrative traction/load model; slope requires gravity component and adequate tire grip.
+ const slope=state.track==="hill"?30:0, mass=state.mass/1000;
+ const traction=wheelTorque/r;
+ const required=mass*9.81*Math.sin(slope*Math.PI/180)+(mass*9.81*.025);
+ const grip=mass*9.81*.75;
+ const canMove=traction>required && grip>required;
+ const efficiency=canMove?Math.max(.18,Math.min(1,(traction-required+1)/(traction+1))):0;
+ const v=linear*efficiency;
+ state.progress+=v*dt;
+ const max=state.track==="flat"?20:8;
+ const pct=Math.min(state.progress/max,1);
+ const x=75+pct*570;
+ const y=state.track==="hill"?241-pct*125:0;
+ $("car").setAttribute("transform",state.track==="hill"?`translate(${x} ${y}) rotate(-12)`:`translate(${x} 0)`);
+ $("result").textContent=canMove?(pct>=1?"ถึงเส้นชัย":"กำลังเคลื่อนที่"):"แรงฉุดไม่เพียงพอ";
+ $("resultSub").textContent=canMove?`ระยะ ${fmt(state.progress,1)} / ${max} m`:"ตรวจสอบแรงบิดและแรงยึดเกาะ";
+ $("status").innerHTML=canMove?`<strong>สถานะ:</strong> รถกำลังเคลื่อนที่ในแบบจำลอง · ความเร็วเชิงแบบจำลอง ${fmt(v*3.6,2)} km/h`:`<strong>สถานะ:</strong> แบบจำลองประเมินว่าแรงฉุดไม่เพียงพอสำหรับเงื่อนไขนี้ ลองเปลี่ยนอัตราทดหรือค่ามอเตอร์`;
+ if(pct>=1){stop();$("result").textContent="ถึงเส้นชัย";$("status").innerHTML="<strong>สำเร็จ:</strong> รถเคลื่อนที่ถึงระยะเป้าหมายในแบบจำลอง";return;}
+ state.raf=requestAnimationFrame(animate);
+}
+function run(){stop();update();state.progress=0;state.last=0;state.running=true;$("runBtn").textContent="กำลังจำลอง…";$("status").innerHTML="<strong>กำลังทดลอง:</strong> สังเกตการเคลื่อนที่และค่าที่เปลี่ยนแปลง";state.raf=requestAnimationFrame(animate);}
+["motor","mass","radius","torque"].forEach(id=>$(id).addEventListener("input",()=>{stop();update()}));
+document.querySelectorAll('input[name="gear"],input[name="track"]').forEach(el=>el.addEventListener("change",()=>{stop();state.progress=0;update();$("car").setAttribute("transform",state.track==="hill"?"translate(75 241) rotate(-12)":"translate(75 0)");}));
+$("runBtn").addEventListener("click",run);
+$("resetBtn").addEventListener("click",()=>{stop();$("motor").value=300;$("mass").value=500;$("radius").value=3;$("torque").value=.08;document.querySelector('input[name="gear"][value="1"]').checked=true;document.querySelector('input[name="track"][value="flat"]').checked=true;state.progress=0;update();$("status").innerHTML="<strong>สถานะ:</strong> รีเซ็ตการทดลองแล้ว";});
+update();
+</script>
+</body>
+</html>
