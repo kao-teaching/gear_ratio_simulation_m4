@@ -13,6 +13,28 @@
 button{border:0;border-radius:11px;padding:11px 15px;background:var(--blue);color:#071326;font-weight:800;cursor:pointer}button.secondary{background:#253854;color:var(--text);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.stage{padding:0;overflow:hidden}.stage-head{padding:17px 18px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.stage-head p{color:var(--muted);margin:3px 0;font-size:.86rem}.track-wrap{padding:12px 14px 4px}.track{width:100%;height:auto;display:block;border-radius:14px;background:linear-gradient(#14243a,#0d1728)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px}.metric{background:#0e192a;border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}.metric span{display:block;color:var(--muted);font-size:.76rem}.metric strong{font-size:1.25rem;display:block;margin-top:3px;overflow-wrap:anywhere}.metric em{font-style:normal;color:var(--muted);font-size:.72rem}.status{margin:0 14px 14px;padding:12px 14px;border-radius:12px;background:#172b42;border:1px solid #2b4768}.status strong{color:var(--cyan)}.force-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 14px 14px}.force-item{background:#0e192a;border:1px solid var(--line);border-radius:10px;padding:10px}.force-item span{display:block;color:var(--muted);font-size:.72rem}.force-item b{font-size:1rem}.force-note{padding:0 14px 14px;color:var(--muted);font-size:.76rem}.lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.bar-row{display:grid;grid-template-columns:90px 1fr 55px;gap:8px;align-items:center;margin:12px 0;font-size:.83rem}.bar{height:10px;border-radius:99px;background:#263750;overflow:hidden}.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--cyan));width:0}.bar.orange i{background:linear-gradient(90deg,#ff9f43,#ffd27c)}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:700}.note{color:var(--muted);font-size:.8rem}.formula{background:#0d1728;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px;font-family:ui-monospace,monospace;color:#d8e9ff}.question{padding:12px;background:#111e31;border-radius:12px;margin:8px 0}.question b{color:var(--orange)}footer{text-align:center;color:var(--muted);font-size:.78rem;padding:25px 8px 0}
 @media(max-width:850px){.layout{grid-template-columns:1fr}.lower{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:420px){.wrap{padding:13px 10px 30px}.hero{padding:20px}.panel{padding:14px}.metrics{gap:7px;padding:10px}.metric{padding:9px}.metric strong{font-size:1.08rem}.stage-head{align-items:flex-start;flex-direction:column}}
+
+/* Internal gearbox animation */
+.gearbox-panel{margin-top:18px;overflow:hidden}
+.gearbox-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.gearbox-head p{margin:3px 0;color:var(--muted);font-size:.84rem}
+.gearbox-legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.76rem;margin:8px 2px 0}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.gearbox-wrap{margin-top:12px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#14243a,#0b1525)}
+.gearbox-svg{width:100%;height:auto;display:block}
+.gear-tooth{fill:#4e91d7;stroke:#b7d9ff;stroke-width:2}
+.gear-tooth.output{fill:#d18b43;stroke:#ffe0a8}
+.shaft{stroke:#a9bdd5;stroke-width:9;stroke-linecap:round;opacity:.8}
+.gear-label{fill:#dce9f8;font-size:13px;text-anchor:middle;font-weight:700}
+.gear-sub{fill:#9eb0ca;font-size:11px;text-anchor:middle}
+.gearbox-readouts{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}
+.gearbox-readout{background:#0e192a;border:1px solid var(--line);border-radius:11px;padding:10px;min-width:0}
+.gearbox-readout span{display:block;color:var(--muted);font-size:.72rem}
+.gearbox-readout b{display:block;color:var(--cyan);font-size:1rem;overflow-wrap:anywhere}
+.gearbox-note{margin:10px 2px 0;color:var(--muted);font-size:.76rem}.diff-explainer{margin-top:12px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#0e192a}.diff-explainer h3{font-size:.95rem;margin:0 0 5px;color:var(--orange)}.diff-explainer p{margin:5px 0;color:var(--muted);font-size:.82rem}.gearbox-state{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:99px;background:#0e192a;border:1px solid var(--line);color:var(--muted);font-size:.76rem}.gearbox-state::before{content:"";width:8px;height:8px;border-radius:50%;background:#7d8da3}.gearbox-state.active{color:var(--green)}.gearbox-state.active::before{background:var(--green);box-shadow:0 0 8px #6fe0a2}
+.data-callout rect{fill:#0b1728;fill-opacity:.94;stroke:#46617f;stroke-width:1.2}.callout-title{fill:#9eb0ca;font-size:10px;font-weight:800;letter-spacing:.5px}.callout-value{fill:#53d7d0;font-size:12px;font-weight:800}.callout-sub{fill:#ffcb83;font-size:10px;font-weight:700}
+@media(max-width:600px){.gearbox-readouts{grid-template-columns:repeat(2,1fr)}.gear-label{font-size:15px}.gear-sub{font-size:13px}.callout-title{font-size:11px}.callout-value{font-size:13px}.callout-sub{font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -81,6 +103,89 @@ button{border:0;border-radius:11px;padding:11px 15px;background:var(--blue);colo
   <div class="status" id="status"><strong>สถานะ:</strong> เลือกชุดเกียร์และสนาม จากนั้นเริ่มจำลองเพื่อเปรียบเทียบ</div>
 </section>
 </main>
+
+
+<section class="panel gearbox-panel" aria-labelledby="gearboxTitle">
+  <div class="gearbox-head">
+    <div><h2 id="gearboxTitle">ภาพจำลองการหมุนของชุดเฟืองภายในรถ</h2><p>Internal Gearbox Animation · ภาพตัดขวางเชิงการศึกษา ปรับตามอัตราทดที่เลือก</p></div>
+    <div><span class="tag" id="gearboxMode">เกียร์ปกติ · 1:1</span> <span class="gearbox-state" id="gearboxState">หยุดทำงาน</span></div>
+  </div>
+  <div class="gearbox-wrap">
+    <svg class="gearbox-svg" id="gearboxSvg" viewBox="0 0 760 405" role="img" aria-label="ภาพจำลองมอเตอร์ เฟืองขับ เฟืองตาม เฟืองท้าย และล้อรถ">
+      <defs>
+        <linearGradient id="gearBg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#1b304b"/><stop offset="1" stop-color="#101b2d"/></linearGradient>
+        <radialGradient id="gearHub"><stop stop-color="#d8e8fa"/><stop offset=".45" stop-color="#617d9d"/><stop offset="1" stop-color="#263c58"/></radialGradient>
+      </defs>
+      <rect x="0" y="0" width="760" height="330" fill="url(#gearBg)"/>
+      <path d="M35 250H725" stroke="#304661" stroke-width="2" stroke-dasharray="5 7"/>
+      <g id="motorRotor" transform="translate(85 145)">
+        <rect x="-40" y="-31" width="80" height="62" rx="13" fill="#25496b" stroke="#8dc8ff" stroke-width="2"/>
+        <path d="M-26 -19H26M-26 0H26M-26 19H26" stroke="#8dc8ff" stroke-width="3" opacity=".65"/>
+        <circle r="17" fill="#102239" stroke="#b7d9ff" stroke-width="3"/>
+        <g id="motorSpin"><path d="M0 -13V13M-13 0H13" stroke="#53d7d0" stroke-width="4" stroke-linecap="round"/></g>
+      </g>
+      <text x="85" y="202" class="gear-label">MOTOR</text><text x="85" y="219" class="gear-sub" id="motorRpmLabel">300 RPM</text>
+      <path id="inputShaft" class="shaft" d="M126 145H220"/>
+      <g id="inputGear" transform="translate(260 145)"><path id="inputGearShape" class="gear-tooth"/><circle r="13" fill="url(#gearHub)" stroke="#d5e7fa" stroke-width="2"/><circle r="4" fill="#102239"/></g>
+      <g id="outputGear" transform="translate(340 145)"><path id="outputGearShape" class="gear-tooth output"/><circle r="13" fill="url(#gearHub)" stroke="#ffe0a8" stroke-width="2"/><circle r="4" fill="#3c2917"/></g>
+      <path id="outputShaft" class="shaft" d="M380 145H610"/>
+      <g id="diffGroup" transform="translate(635 145)"><circle r="30" fill="#243d59" stroke="#a8bfd9" stroke-width="4"/><circle r="17" fill="#d18b43" stroke="#ffe0a8" stroke-width="3"/><path d="M-20 0H20M0 -20V20" stroke="#ffe0a8" stroke-width="3"/><circle r="5" fill="#17273c"/></g>
+      <path d="M635 178V245M635 215H675M635 275H675" stroke="#a9bdd5" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <g id="driveWheelLeft" transform="translate(700 215)"><circle r="22" fill="#111722" stroke="#8fa6c2" stroke-width="4"/><circle r="14" fill="#263b54" stroke="#b9c9dc" stroke-width="2"/><g id="wheelSpinLeft"><path d="M0 -13V13M-13 0H13" stroke="#dce9f8" stroke-width="3" stroke-linecap="round"/></g><circle r="4" fill="#53d7d0"/></g>
+      <g id="driveWheelRight" transform="translate(700 275)"><circle r="22" fill="#111722" stroke="#8fa6c2" stroke-width="4"/><circle r="14" fill="#263b54" stroke="#b9c9dc" stroke-width="2"/><g id="wheelSpinRight"><path d="M0 -13V13M-13 0H13" stroke="#dce9f8" stroke-width="3" stroke-linecap="round"/></g><circle r="4" fill="#53d7d0"/></g>
+      <text id="inputGearLabel" x="260" y="220" class="gear-label">เฟืองขับ</text><text id="inputTeethLabel" x="260" y="237" class="gear-sub">30 ฟัน</text>
+      <text id="outputGearLabel" x="340" y="220" class="gear-label">เฟืองตาม</text><text id="outputTeethLabel" x="340" y="237" class="gear-sub">30 ฟัน</text>
+      <text x="635" y="198" class="gear-label">DIFFERENTIAL</text><text x="700" y="247" class="gear-sub">ล้อซ้าย</text><text x="700" y="307" class="gear-sub">ล้อขวา</text>
+      <text x="380" y="35" fill="#b9cbe2" font-size="14" text-anchor="middle">POWER FLOW  →</text>
+      <!-- Live data callouts: values are updated from calculate() and vehicle velocity -->
+      <g class="data-callout" id="motorDataTag">
+        <rect x="14" y="18" width="150" height="88" rx="9"/>
+        <text x="24" y="36" class="callout-title">MOTOR / INPUT</text>
+        <text x="24" y="54" id="motorDataRpm" class="callout-value">0 RPM</text>
+        <text x="24" y="72" id="motorDataTorque" class="callout-sub">Torque 0.08 N·m</text>
+        <text x="24" y="90" id="motorDataPower" class="callout-sub">Power 0.00 W</text>
+      </g>
+      <g class="data-callout" id="inputDataTag">
+        <rect x="180" y="265" width="158" height="66" rx="9"/>
+        <text x="190" y="283" class="callout-title">DRIVING GEAR</text>
+        <text x="190" y="302" id="inputDataRpm" class="callout-value">0 RPM</text>
+        <text x="190" y="319" id="inputDataTorque" class="callout-sub">Torque 0.08 N·m</text>
+      </g>
+      <g class="data-callout" id="outputDataTag">
+        <rect x="350" y="265" width="158" height="78" rx="9"/>
+        <text x="360" y="283" class="callout-title">DRIVEN GEAR</text>
+        <text x="360" y="302" id="outputDataRpm" class="callout-value">0 RPM</text>
+        <text x="360" y="319" id="outputDataTorque" class="callout-sub">Torque 0.08 N·m</text>
+        <text x="360" y="336" id="outputDataPower" class="callout-sub">Power 0.00 W</text>
+      </g>
+      <g class="data-callout" id="diffDataTag">
+        <rect x="555" y="18" width="190" height="88" rx="9"/>
+        <text x="565" y="36" class="callout-title">DIFFERENTIAL</text>
+        <text x="565" y="54" id="diffDataRpm" class="callout-value">0 RPM</text>
+        <text x="565" y="72" id="diffDataTorque" class="callout-sub">Torque 0.08 N·m</text>
+        <text x="565" y="90" id="diffDataPower" class="callout-sub">Power 0.00 W</text>
+      </g>
+      <g class="data-callout" id="wheelDataTag">
+        <rect x="535" y="337" width="210" height="58" rx="9"/>
+        <text x="545" y="354" class="callout-title">DRIVE WHEELS · EACH</text>
+        <text x="545" y="372" id="wheelDataRpm" class="callout-value">0 RPM</text>
+        <text x="545" y="388" id="wheelDataTorque" class="callout-sub">Torque 0.04 N·m</text>
+      </g>
+    </svg>
+  </div>
+  <div class="gearbox-readouts" aria-live="polite">
+    <div class="gearbox-readout"><span>รอบเพลาขาเข้า ณ ขณะนั้น</span><b id="gearboxInputRpm">0 RPM</b></div>
+    <div class="gearbox-readout"><span>รอบเพลาขาออก ณ ขณะนั้น</span><b id="gearboxOutputRpm">0 RPM</b></div>
+    <div class="gearbox-readout"><span>อัตราทดที่เลือก</span><b id="gearboxRatio">1:1</b></div>
+    <div class="gearbox-readout"><span>แรงบิดขาออก (อุดมคติ)</span><b id="gearboxTorque">0.08 N·m</b></div>
+    <div class="gearbox-readout"><span>กำลังกลขาเข้า ณ ขณะนั้น</span><b id="gearboxInputPower">0.00 W</b></div>
+    <div class="gearbox-readout"><span>กำลังกลขาออก ณ ขณะนั้น</span><b id="gearboxOutputPower">0.00 W</b></div>
+    <div class="gearbox-readout"><span>แรงขับรวมที่ล้อ</span><b id="gearboxDriveForce">0.00 N</b></div>
+    <div class="gearbox-readout"><span>ความเร็วรถ ณ ขณะนั้น</span><b id="gearboxVehicleSpeed">0.00 km/h</b></div>
+  </div>
+  <p class="gearbox-note">ค่าบนภาพและแผงข้อมูลอัปเดตทุกเฟรมจากความเร็วรถจริงในแบบจำลอง (state.velocity) โดยแบ่งแรงบิดขาออกให้ล้อซ้ายและขวาเท่ากันเมื่อวิ่งทางตรง</p>
+  <div class="diff-explainer"><h3> Differential คืออะไร? (เฟืองท้าย)</h3><p>เป็นชุดเฟืองที่รับกำลังจากเพลาขาออกแล้วแบ่งกำลังไปยังล้อขับซ้ายและขวา โดยยอมให้ล้อทั้งสองหมุนต่างความเร็วกันได้ขณะเลี้ยว</p><p><b>วิ่งทางตรง:</b> ล้อซ้ายและขวาหมุนเร็วใกล้เคียงกัน · <b>ขณะเลี้ยว:</b> ล้อด้านนอกโค้งหมุนเร็วกว่าล้อด้านใน</p><p>ในแบบจำลองนี้แสดงการหมุนของล้อทั้งสองแบบทางตรงเท่านั้น จึงหมุนด้วยความเร็วเท่ากัน ยังไม่ได้จำลองการเลี้ยวหรือการกระจายแรงบิดแบบละเอียด</p></div>
+</section>
 
 <section class="lower">
   <div class="panel">
@@ -165,6 +270,95 @@ function drawScene(){
  $('sceneLabel').textContent=hill?'INCLINED TRACK · 30°':'FLAT TRACK · 20 m';
  $('trackCaption').textContent=hill?'สนามทางลาดชัน · มุมเอียง 30 องศา':'สนามทางเรียบ · ระยะทางเป้าหมาย 20 เมตร';
 }
+
+// ----- Internal gearbox visualisation -----
+const gearboxAnim={inputAngle:0,outputAngle:0,wheelAngle:0};
+function gearPath(teeth,rootRadius,tipRadius){
+ const points=[];
+ for(let i=0;i<teeth;i++){
+  const a=(i/teeth)*Math.PI*2, q=Math.PI*2/teeth;
+  [[a,rootRadius],[a+q*.18,rootRadius],[a+q*.22,tipRadius],[a+q*.48,tipRadius],[a+q*.52,tipRadius],[a+q*.78,tipRadius],[a+q*.82,rootRadius],[a+q,rootRadius]].forEach(([ang,r])=>points.push([Math.cos(ang)*r,Math.sin(ang)*r]));
+ }
+ return points.map((p,i)=>(i?'L':'M')+p[0].toFixed(2)+' '+p[1].toFixed(2)).join(' ')+' Z';
+}
+function currentWheelRpm(){
+ const radius=state.radius/100;
+ return state.velocity>0?state.velocity/(2*Math.PI*radius)*60:0;
+}
+function updateGearboxReadouts(){
+ const wheelRpm=currentWheelRpm();
+ const inputRpm=wheelRpm*state.gear;
+ const c=calculate();
+ const inputOmega=inputRpm*2*Math.PI/60;
+ const outputOmega=wheelRpm*2*Math.PI/60;
+ const inputPower=state.torque*inputOmega;
+ const outputPower=c.wheelTorque*outputOmega;
+ const wheelTorqueEach=c.wheelTorque/2;
+ const vehicleSpeed=state.velocity*3.6;
+ const activeInputTorque=state.torque;
+ $('gearboxInputRpm').textContent=fmt(inputRpm,0)+' RPM';
+ $('gearboxOutputRpm').textContent=fmt(wheelRpm,0)+' RPM';
+ $('gearboxRatio').textContent=state.gear+':1';
+ $('gearboxTorque').textContent=fmt(c.wheelTorque,2)+' N·m';
+ $('gearboxInputPower').textContent=fmt(inputPower,2)+' W';
+ $('gearboxOutputPower').textContent=fmt(outputPower,2)+' W';
+ $('gearboxDriveForce').textContent=fmt(c.actualDriveForce,2)+' N';
+ $('gearboxVehicleSpeed').textContent=fmt(vehicleSpeed,2)+' km/h';
+ $('motorRpmLabel').textContent=fmt(inputRpm,0)+' RPM';
+ $('motorDataRpm').textContent=fmt(inputRpm,0)+' RPM';
+ $('motorDataTorque').textContent='Torque '+fmt(activeInputTorque,2)+' N·m';
+ $('motorDataPower').textContent='Power '+fmt(inputPower,2)+' W';
+ $('inputDataRpm').textContent=fmt(inputRpm,0)+' RPM';
+ $('inputDataTorque').textContent='Torque '+fmt(activeInputTorque,2)+' N·m';
+ $('outputDataRpm').textContent=fmt(wheelRpm,0)+' RPM';
+ $('outputDataTorque').textContent='Torque '+fmt(c.wheelTorque,2)+' N·m';
+ $('outputDataPower').textContent='Power '+fmt(outputPower,2)+' W';
+ $('diffDataRpm').textContent=fmt(wheelRpm,0)+' RPM';
+ $('diffDataTorque').textContent='Torque '+fmt(c.wheelTorque,2)+' N·m';
+ $('diffDataPower').textContent='Power '+fmt(outputPower,2)+' W';
+ $('wheelDataRpm').textContent=fmt(wheelRpm,0)+' RPM';
+ $('wheelDataTorque').textContent='Torque '+fmt(wheelTorqueEach,2)+' N·m / ล้อ';
+ $('gearboxState').textContent=state.running?'กำลังหมุน':'หยุดทำงาน';
+ $('gearboxState').classList.toggle('active',state.running);
+}
+function updateGearbox(){
+ const ratio=state.gear;
+ const driverTeeth=ratio===.5?40:ratio===1?30:20;
+ const drivenTeeth=ratio===.5?20:ratio===1?30:40;
+ const driverR=42, drivenR=driverR*ratio;
+ const driverX=260, drivenX=driverX+driverR+drivenR;
+ $('inputGearShape').setAttribute('d',gearPath(driverTeeth,driverR*.88,driverR));
+ $('outputGearShape').setAttribute('d',gearPath(drivenTeeth,drivenR*.88,drivenR));
+ $('inputGear').setAttribute('transform',`translate(${driverX} 145) rotate(${gearboxAnim.inputAngle})`);
+ $('outputGear').setAttribute('transform',`translate(${drivenX} 145) rotate(${gearboxAnim.outputAngle})`);
+ $('inputShaft').setAttribute('d',`M126 145H${driverX-driverR}`);
+ $('outputShaft').setAttribute('d',`M${drivenX+drivenR} 145H605`);
+ $('inputGearLabel').setAttribute('x',driverX);$('inputTeethLabel').setAttribute('x',driverX);
+ $('outputGearLabel').setAttribute('x',drivenX);$('outputTeethLabel').setAttribute('x',drivenX);
+ $('gearboxMode').textContent=(ratio===.5?'เกียร์สูง':ratio===1?'เกียร์ปกติ':'เกียร์ต่ำ')+' · '+ratio+':1';
+ $('inputTeethLabel').textContent=driverTeeth+' ฟัน';$('outputTeethLabel').textContent=drivenTeeth+' ฟัน';
+ updateGearboxReadouts();
+}
+function animateGearboxMotion(dt){
+ // Wheel RPM is derived from the car's instantaneous linear velocity,
+ // so every rotating part stays synchronized with the moving car.
+ const outputRpm=currentWheelRpm();
+ const inputRpm=outputRpm*state.gear;
+ const inputDelta=inputRpm*6*dt;
+ const outputDelta=outputRpm*6*dt;
+ gearboxAnim.inputAngle=(gearboxAnim.inputAngle+inputDelta)%360;
+ gearboxAnim.outputAngle=(gearboxAnim.outputAngle-outputDelta)%360;
+ gearboxAnim.wheelAngle=(gearboxAnim.wheelAngle+outputDelta)%360;
+ const ratio=state.gear, drivenR=42*ratio, drivenX=302+drivenR;
+ $('inputGear').setAttribute('transform',`translate(260 145) rotate(${gearboxAnim.inputAngle})`);
+ $('outputGear').setAttribute('transform',`translate(${drivenX} 145) rotate(${gearboxAnim.outputAngle})`);
+ $('motorSpin').setAttribute('transform',`rotate(${gearboxAnim.inputAngle})`);
+ $('wheelSpinLeft').setAttribute('transform',`rotate(${gearboxAnim.wheelAngle})`);
+ $('wheelSpinRight').setAttribute('transform',`rotate(${gearboxAnim.wheelAngle})`);
+ $('diffGroup').setAttribute('transform',`translate(635 145) rotate(${gearboxAnim.outputAngle})`);
+ updateGearboxReadouts();
+}
+
 function update(){
  read();const c=calculate();
  $('motorOut').textContent=state.motor+' RPM';$('massOut').textContent=state.mass+' g';$('radiusOut').textContent=fmt(state.radius,1)+' cm';$('torqueOut').textContent=fmt(state.torque,2)+' N·m';
@@ -174,10 +368,11 @@ function update(){
  $('rpmBar').style.width=Math.min(c.wheelRpm/1200*100,100)+'%';$('rpmBarText').textContent=fmt(c.wheelRpm,0);
  $('torqueBar').style.width=Math.min(c.wheelTorque/.3*100,100)+'%';$('torqueBarText').textContent=fmt(c.wheelTorque,2);
  $('driveForce').textContent=fmt(c.rawDriveForce,2)+' N';$('resistForce').textContent=fmt(c.resistance,2)+' N';$('gripForce').textContent=fmt(c.gripLimit,2)+' N';
+ updateGearbox();
  drawScene();
  if(!state.running){$('result').textContent='พร้อมทดลอง';$('resultSub').textContent='กดเริ่มจำลอง';}
 }
-function stop(){state.running=false;if(state.raf)cancelAnimationFrame(state.raf);state.raf=null;$('runBtn').textContent='▶ เริ่มจำลอง';}
+function stop(){state.running=false;if(state.raf)cancelAnimationFrame(state.raf);state.raf=null;$('runBtn').textContent='▶ เริ่มจำลอง';if(typeof updateGearboxReadouts==='function')updateGearboxReadouts();}
 function showFailure(c){
  $('result').textContent=c.slipping?'ล้อหมุนฟรี':'ไต่ไม่ไหว';
  $('resultSub').textContent='แรงขับไม่พอเอาชนะแรงต้าน';
@@ -188,7 +383,7 @@ function animate(t){
  if(!state.last)state.last=t;
  const dt=Math.min((t-state.last)/1000,.04);state.last=t;
  const c=calculate();
- if(!c.canClimb){stop();showFailure(c);return;}
+ if(!c.canClimb){stop();state.velocity=0;updateGearboxReadouts();showFailure(c);return;}
  // F = ma; speed is limited by the ideal wheel speed derived from motor RPM.
  const maxSpeed=c.theoreticalSpeed;
  state.velocity=Math.min(state.velocity+c.acceleration*dt,maxSpeed);
@@ -200,16 +395,20 @@ function animate(t){
  const wheelAngle=state.progress/(state.radius/100)*180/Math.PI;
  $('wheelA').setAttribute('transform',`rotate(${wheelAngle} -25 211)`);
  $('wheelB').setAttribute('transform',`rotate(${wheelAngle} 27 211)`);
+ animateGearboxMotion(dt);
  $('result').textContent=pct>=1?'ถึงเส้นชัย':'กำลังเคลื่อนที่';
  $('resultSub').textContent=`${fmt(state.progress,2)} / ${maxDistance} m · ${fmt(state.velocity*3.6,2)} km/h`;
  $('status').innerHTML='<strong>กำลังเคลื่อนที่:</strong> ความเร็ว '+fmt(state.velocity*3.6,2)+' km/h · ความเร่ง '+fmt(c.acceleration,2)+' m/s²'+(c.slipping?' · <span style="color:#ffb454">มีการลื่นไถล</span>':' · แรงยึดเกาะเพียงพอ');
- if(pct>=1){stop();$('result').textContent='ถึงเส้นชัย';$('status').innerHTML='<strong>สำเร็จ:</strong> รถเคลื่อนที่ถึงระยะเป้าหมายในแบบจำลอง';return;}
+ if(pct>=1){stop();state.velocity=0;updateGearboxReadouts();$('result').textContent='ถึงเส้นชัย';$('status').innerHTML='<strong>สำเร็จ:</strong> รถเคลื่อนที่ถึงระยะเป้าหมายในแบบจำลอง';return;}
  state.raf=requestAnimationFrame(animate);
 }
 function run(){
- stop();update();state.progress=0;state.velocity=0;state.last=0;
+ stop();state.progress=0;state.velocity=0;state.last=0;
+ gearboxAnim.inputAngle=0;gearboxAnim.outputAngle=0;gearboxAnim.wheelAngle=0;
+ update();
  $('car').setAttribute('transform',carTransform(75));
  $('wheelA').removeAttribute('transform');$('wheelB').removeAttribute('transform');
+ $('motorSpin').setAttribute('transform','rotate(0)');$('wheelSpinLeft').setAttribute('transform','rotate(0)');$('wheelSpinRight').setAttribute('transform','rotate(0)');$('diffGroup').setAttribute('transform','translate(635 145) rotate(0)');
  const c=calculate();
  if(!c.canClimb){showFailure(c);return;}
  state.running=true;$('runBtn').textContent='กำลังจำลอง…';
@@ -219,7 +418,7 @@ function run(){
 ['motor','mass','radius','torque'].forEach(id=>$(id).addEventListener('input',()=>{stop();state.progress=0;state.velocity=0;update();$('car').setAttribute('transform',carTransform(75));$('wheelA').removeAttribute('transform');$('wheelB').removeAttribute('transform');}));
 document.querySelectorAll('input[name="gear"],input[name="track"]').forEach(el=>el.addEventListener('change',()=>{stop();state.progress=0;state.velocity=0;update();$('car').setAttribute('transform',carTransform(75));$('wheelA').removeAttribute('transform');$('wheelB').removeAttribute('transform');}));
 $('runBtn').addEventListener('click',run);
-$('resetBtn').addEventListener('click',()=>{stop();$('motor').value=300;$('mass').value=500;$('radius').value=3;$('torque').value=.08;document.querySelector('input[name="gear"][value="1"]').checked=true;document.querySelector('input[name="track"][value="flat"]').checked=true;state.progress=0;state.velocity=0;update();$('status').innerHTML='<strong>สถานะ:</strong> รีเซ็ตการทดลองแล้ว';$('car').setAttribute('transform',carTransform(75));$('wheelA').removeAttribute('transform');$('wheelB').removeAttribute('transform');});
+$('resetBtn').addEventListener('click',()=>{stop();$('motor').value=300;$('mass').value=500;$('radius').value=3;$('torque').value=.08;document.querySelector('input[name="gear"][value="1"]').checked=true;document.querySelector('input[name="track"][value="flat"]').checked=true;state.progress=0;state.velocity=0;update();gearboxAnim.inputAngle=0;gearboxAnim.outputAngle=0;gearboxAnim.wheelAngle=0;updateGearbox();$('motorSpin').removeAttribute('transform');$('wheelSpinLeft').removeAttribute('transform');$('wheelSpinRight').removeAttribute('transform');$('status').innerHTML='<strong>สถานะ:</strong> รีเซ็ตการทดลองแล้ว';$('car').setAttribute('transform',carTransform(75));$('wheelA').removeAttribute('transform');$('wheelB').removeAttribute('transform');});
 update();
 </script>
 </body>
